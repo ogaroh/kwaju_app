@@ -1,0 +1,11 @@
+{
+  "@@locale": "en",
+  "counterAppBarTitle": "Counter",
+  "@counterAppBarTitle": {
+    "description": "Text shown in the AppBar of the Counter Page"
+  },
+  "shoppingAppBarTitle": "Monthly Shopping List",
+  "@shoppingAppBarTitle": {
+    "description": "Text shown in the AppBar of the shopping list Page"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "@@locale": "es",
+  "counterAppBarTitle": "Contador",
+  "@counterAppBarTitle": {
+    "description": "Texto mostrado en la AppBar de la página del contador"
+  },
+  "shoppingAppBarTitle": "Lista de Compras Mensual",
+  "@shoppingAppBarTitle": {
+    "description": "Texto mostrado en la barra de la aplicación de la página de lista de compras"
+  }
+}
