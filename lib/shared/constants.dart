@@ -1,3 +1,4 @@
+import 'package:assessment/shared/models/product.dart';
 import 'package:assessment/shared/theme/colors.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -60,4 +61,26 @@ final brands = [
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZywFC-c3dB_ehAzlZcMQEza4sxesPZWthXA&s',
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKBNva6drqjQcplWlOShUny6DRO8p2DkrfzA&s',
   'https://www.tendersure.africa/wp-content/uploads/2022/03/Fresha-logo-e1647586226910.png',
+];
+
+// dummy products
+final products = [
+  Product(
+    title: 'Bio Foods Mango Yoghurt',
+    price: 450,
+    description: '',
+    image: brands.first,
+  ),
+  Product(
+    title: 'Fortified Fresha Vanilla Yoghurt',
+    price: 450,
+    description: '',
+    image: brands.last,
+  ),
+  Product(
+    title: 'Fortified Fresha Strawberry Yoghurt',
+    price: 450,
+    description: '',
+    image: brands.last,
+  ),
 ];
