@@ -3,6 +3,7 @@ import 'package:assessment/l10n/l10n.dart';
 import 'package:assessment/shared/constants.dart';
 import 'package:assessment/shared/theme/colors.dart';
 import 'package:assessment/shopping/view/widgets/custom_outlined_button.dart';
+import 'package:assessment/shopping/view/widgets/gradient_text.dart';
 import 'package:assessment/shopping/view/widgets/story_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,14 @@ class _ShoppingViewState extends State<ShoppingView> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(l10n.shoppingAppBarTitle),
+        title: GradientText(
+          l10n.shoppingAppBarTitle,
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+          gradient: kDefaultGradient,
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -140,15 +148,22 @@ class _ShoppingViewState extends State<ShoppingView> {
   }
 }
 
-class ShoppingBody extends StatelessWidget {
+class ShoppingBody extends StatefulWidget {
   const ShoppingBody({super.key});
 
+  @override
+  State<ShoppingBody> createState() => _ShoppingBodyState();
+}
+
+class _ShoppingBodyState extends State<ShoppingBody> {
+  String selected = options.first;
   @override
   Widget build(BuildContext context) {
     // final theme = Theme.of(context);
     // final count = context.select((ShoppingCubit cubit) => cubit.state);
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(
@@ -195,14 +210,18 @@ class ShoppingBody extends StatelessWidget {
               const Text(
                 'Categories',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const Spacer(),
               TextButton.icon(
+                style: TextButton.styleFrom(foregroundColor: kPrimaryColor),
                 onPressed: () {},
-                label: const Text('View All'),
+                label: const GradientText(
+                  'View All',
+                  gradient: kDefaultGradient,
+                ),
                 icon: const Icon(
                   Icons.arrow_forward_ios,
                   size: 16,
@@ -244,13 +263,49 @@ class ShoppingBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Items in Kitchen/Pantry',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+              Row(
+                children: [
+                  const Text(
+                    'Products in Kitchen/Pantry',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const Spacer(),
+                  Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: IconButton(
+                          visualDensity: VisualDensity.compact,
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.arrow_back_ios,
+                            color: kPrimaryColor,
+                            size: 15,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: IconButton(
+                          visualDensity: VisualDensity.compact,
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.arrow_forward_ios,
+                            color: kPrimaryColor,
+                            size: 15,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 8,
@@ -270,6 +325,107 @@ class ShoppingBody extends StatelessWidget {
                     .toList(),
               ),
             ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Row(
+            children: subcategories
+                .map(
+                  (e) => Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: ActionChip(
+                      label: Text(e),
+                      onPressed: () => setState(() {
+                        selected = e;
+                      }),
+                    ),
+                  ),
+                )
+                .toList(),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Row(
+            children: [
+              const Text(
+                'Brands',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const Spacer(),
+              Row(
+                children: [
+                  IconButton.outlined(
+                    visualDensity: VisualDensity.compact,
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.arrow_back_ios,
+                      color: kPrimaryColor,
+                      size: 15,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  IconButton.outlined(
+                    visualDensity: VisualDensity.compact,
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: kPrimaryColor,
+                      size: 15,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: brands
+                  .map(
+                    (link) => Padding(
+                      padding: const EdgeInsets.only(right: 16),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.grey.shade500,
+                        radius: 22,
+                        child: CircleAvatar(
+                          radius: 20,
+                          backgroundImage: NetworkImage(link),
+                          backgroundColor: Colors.white,
+                        ),
+                      ),
+                    ),
+                  )
+                  .toList(),
+            ),
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: 8,
+            horizontal: 8,
+          ),
+          child: Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(text: 'Showing 250 items in '),
+                TextSpan(
+                  text: 'Yoghurts',
+                  style: TextStyle(
+                    color: kSecondaryColor,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ],

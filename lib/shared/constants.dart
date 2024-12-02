@@ -47,3 +47,17 @@ final options = [
   'Cereal',
   'Dairy',
 ];
+
+final subcategories = [
+  'All',
+  'Yoghurt',
+  'Cheese',
+  'Ghee',
+];
+final brands = [
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzMXvvRWAWGgW58qimSt6VXU-JG_ezJv42kg&s',
+  'https://pbs.twimg.com/profile_images/907517028784918528/tx_0mh3z_400x400.jpg',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZywFC-c3dB_ehAzlZcMQEza4sxesPZWthXA&s',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKBNva6drqjQcplWlOShUny6DRO8p2DkrfzA&s',
+  'https://www.tendersure.africa/wp-content/uploads/2022/03/Fresha-logo-e1647586226910.png',
+];
