@@ -10,6 +10,9 @@ A Very Good Project created by Very Good CLI.
 
 ---
 
+## Screenshots
+![alt text](Screenshot_1733126151.png) ![alt text](Screenshot_1733126163.png) ![alt text](Screenshot_1733126168.png) ![alt text](Screenshot_1733126169.png)
+
 ## Getting Started 🚀
 
 This project contains 3 flavors:
